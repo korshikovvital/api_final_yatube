@@ -2,6 +2,7 @@
 from posts.models import Post, Group
 from rest_framework.exceptions import PermissionDenied
 from rest_framework.pagination import LimitOffsetPagination
+from rest_framework.permissions import IsAuthenticated
 
 from .serializers import (
     PostSerializer,
@@ -68,6 +69,7 @@ class CommentViewSet(viewsets.ModelViewSet):
 class FollowViewSet(viewsets.ModelViewSet):
     serializer_class = FollowSerializer
     filter_backends = (filters.SearchFilter,)
+    permission_classes = (IsAuthenticated,)
     search_field = ('following__username',)
 
     def get_queryset(self):
