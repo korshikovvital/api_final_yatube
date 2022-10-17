@@ -95,7 +95,7 @@ REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION_CLASSES': [
         'rest_framework_simplejwt.authentication.JWTAuthentication',
     ],
-    'PAGE_SIZE': 1,
+    # 'PAGE_SIZE': 1,
 }
 SIMPLE_JWT = {
 
