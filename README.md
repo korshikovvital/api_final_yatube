@@ -21,3 +21,13 @@
     Django Rest Framework 3.12.4
     Simple-JWT 4.7.2
 
+
+Примеры
+
+Подробная документация с примерами размещена по адресу: http://127.0.0.1:8000/redoc/
+Автор
+
+Коршиков Виталий
+
+    korshikovvitaly@gmail.com
+    https://t.me/Spb_vitaliy_korshikov
