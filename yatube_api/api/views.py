@@ -67,11 +67,12 @@ class CommentViewSet(viewsets.ModelViewSet):
 
 
 class FollowViewSet(viewsets.ModelViewSet):
-    queryset = Follow.objects.all()
     serializer_class = FollowSerializer
-    filter_backends = (filters.SearchFilter,)
     permission_classes = (IsAuthenticated,)
-    search_field = ('following__username',)
+    filter_backends = (filters.SearchFilter,)
+    search_fields = ('following__username',)
+    def get_queryset(self):
+        return self.request.user.follow.all()
 
     def perform_create(self, serializer):
         user = self.request.user

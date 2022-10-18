@@ -53,3 +53,18 @@ class FollowSerializer(serializers.ModelSerializer):
     class Meta:
         fields = ('user', 'following')
         model = Follow
+
+    def validate(self, data):
+        user=self.context['request'].user
+        following=data['following']
+        if user == following:
+            raise serializers.ValidationError(
+                'Нельзя подписаться на себя'
+            )
+        new_queriset=Follow.objects.filter(user=user,following=following)
+        if len(new_queriset) != 0:
+            raise serializers.ValidationError(
+                'Нельзя подписаться повторно'
+            )
+
+        return data
