@@ -2,8 +2,7 @@ from rest_framework import serializers
 from rest_framework.relations import SlugRelatedField
 import base64
 from django.core.files.base import ContentFile
-
-from posts.models import Comment, Post, Follow, Group,User
+from posts.models import Comment, Post, Follow, Group, User
 
 
 class GroupSerializer(serializers.ModelSerializer):
