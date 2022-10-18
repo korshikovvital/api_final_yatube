@@ -1,5 +1,5 @@
 # TODO:  Напишите свой вариант
-from posts.models import Post, Group
+from posts.models import Post, Group, Follow
 from rest_framework.exceptions import PermissionDenied
 from rest_framework.pagination import LimitOffsetPagination
 from rest_framework.permissions import IsAuthenticated
@@ -67,13 +67,13 @@ class CommentViewSet(viewsets.ModelViewSet):
 
 
 class FollowViewSet(viewsets.ModelViewSet):
+    queryset = Follow.objects.all()
     serializer_class = FollowSerializer
     filter_backends = (filters.SearchFilter,)
     permission_classes = (IsAuthenticated,)
     search_field = ('following__username',)
 
-    def get_queryset(self):
-        return self.request.user.following.all()
+
 
     def perform_create(self, serializer):
         user = self.request.user
