@@ -73,7 +73,7 @@ class FollowViewSet(viewsets.ModelViewSet):
     search_field = ('following__username',)
 
     def get_queryset(self):
-        return self.request.user.follower.all()
+        return self.request.user.following.all()
 
     def perform_create(self, serializer):
         user = self.request.user

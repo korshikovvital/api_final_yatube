@@ -3,7 +3,7 @@ from rest_framework.relations import SlugRelatedField
 import base64
 from django.core.files.base import ContentFile
 
-from posts.models import Comment, Post, Follow, Group
+from posts.models import Comment, Post, Follow, Group,User
 
 
 class GroupSerializer(serializers.ModelSerializer):
@@ -42,7 +42,14 @@ class CommentSerializer(serializers.ModelSerializer):
 
 
 class FollowSerializer(serializers.ModelSerializer):
-    user = serializers.PrimaryKeyRelatedField(read_only=True)
+    user = serializers.SlugRelatedField(
+        read_only=True,
+        slug_field='username'
+    )
+    following = serializers.SlugRelatedField(
+        queryset=User.objects.all(),
+        slug_field='username'
+    )
 
     class Meta:
         fields = ('user', 'following')
