@@ -1,5 +1,5 @@
 # TODO:  Напишите свой вариант
-from posts.models import Post, Group, Follow
+from posts.models import Post, Group
 from rest_framework.exceptions import PermissionDenied
 from rest_framework.pagination import LimitOffsetPagination
 from rest_framework.permissions import IsAuthenticated
