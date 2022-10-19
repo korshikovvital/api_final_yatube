@@ -10,7 +10,7 @@ from .serializers import (
     GroupSerializer,
     FollowSerializer
 )
-from rest_framework import viewsets
+from rest_framework import viewsets, permissions
 from django.shortcuts import get_object_or_404
 from rest_framework import filters
 
@@ -18,6 +18,7 @@ from rest_framework import filters
 class GroupViewSet(viewsets.ReadOnlyModelViewSet):
     queryset = Group.objects.all()
     serializer_class = GroupSerializer
+    permission_classes = (permissions.IsAuthenticatedOrReadOnly,)
 
 
 class PostViewSet(viewsets.ModelViewSet):
