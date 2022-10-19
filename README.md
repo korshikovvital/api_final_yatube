@@ -25,6 +25,8 @@
 Примеры
 
 GET http://127.0.0.1:8000/api/v1/posts/  Http status 200,
+    ekfmcefkc
+    efmcklfem
 POST http://127.0.0.1:8000/api/v1/posts/ Http status 201
 
 Подробная документация с примерами размещена по адресу: http://127.0.0.1:8000/redoc/
